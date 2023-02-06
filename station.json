@@ -1,0 +1,265 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.514055,25.048808 ]
+      },
+      "properties": {
+      "Name":"A1(台北車站)",
+      "Type":"地下車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.482899,25.054662 ]
+      },
+      "properties": {
+      "Name":"A2(三重站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.45889,25.061712 ]
+      },
+      "properties": {
+      "Name":"A3(新北產業園區站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.445721,25.059207 ]
+      },
+      "properties": {
+      "Name":"A4(新莊副都心站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.43947,25.053206 ]
+      },
+      "properties": {
+      "Name":"A5(泰山站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.422686,25.033189 ]
+      },
+      "properties": {
+      "Name":"A6(泰山貴和站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.385466,25.041837 ]
+      },
+      "properties": {
+      "Name":"A7(體育大學站)",
+      "Type":"地下車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.370829,25.060472 ]
+      },
+      "properties": {
+      "Name":"A8(長庚醫院站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.361308,25.065795 ]
+      },
+      "properties": {
+      "Name":"A9(林口站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.284789,25.080827 ]
+      },
+      "properties": {
+      "Name":"A10(山鼻站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.266531,25.086422 ]
+      },
+      "properties": {
+      "Name":"A11(坑口站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.239749,25.081838 ]
+      },
+      "properties": {
+      "Name":"A12(機場第一航廈站)",
+      "Type":"地下車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.231548,25.076772 ]
+      },
+      "properties": {
+      "Name":"A13(機場第二航廈站)",
+      "Type":"地下車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.226678,25.07298 ]
+      },
+      "properties": {
+      "Name":"A14(機場第三航廈站)",
+      "Type":"地下車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.221078,25.069641 ]
+      },
+      "properties": {
+      "Name":"A14a(機場旅館站)",
+      "Type":"地下車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.210512,25.055994 ]
+      },
+      "properties": {
+      "Name":"A15(大園站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.215664,25.036667 ]
+      },
+      "properties": {
+      "Name":"A16(橫山站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.221027,25.024129 ]
+      },
+      "properties": {
+      "Name":"A17(領航站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.214223,25.013794 ]
+      },
+      "properties": {
+      "Name":"A18(高鐵桃園站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.203302,25.001803 ]
+      },
+      "properties": {
+      "Name":"A19(桃園體育園區站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.216278,24.980184 ]
+      },
+      "properties": {
+      "Name":"A20(興南站)",
+      "Type":"高架車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Point",
+         "coordinates":  [ 121.220688,24.967479 ]
+      },
+      "properties": {
+      "Name":"A21(環北站)",
+      "Type":"地下車站"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+         "type": "Polygon",
+         "coordinates":  [
+            [
+              [121.48591021460503, 25.150033789922833],
+              [121.18503399301893, 25.066548340042456],
+              [121.2131237784139, 24.965314550119622],
+              [121.514, 25.0488]
+            ]
+          ]
+      },
+      "properties": {
+      "Name":"機捷點資料範圍",
+      "Type":"name"
+      }
+    }
+  ]
+}
