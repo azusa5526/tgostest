@@ -3,38 +3,7 @@ import mygeodata from "./station.json";
 const TGMap = document.getElementById("TGMap");
 let pMap = null;
 let infoWindow = null;
-const markers = [
-  { point: { lat: 24.783076, lng: 120.999146 }, content: "ABCDE" },
-  {
-    point: { lat: 24.283076, lng: 120.199146 },
-    content: `<input class="owen" type="text">`,
-  },
-];
-const lines = [
-  [
-    { lat: 24.983076, lng: 120.999146 },
-    { lat: 24.683076, lng: 120.199146 },
-    { lat: 24.183076, lng: 120.399146 },
-  ],
-  [
-    { lat: 24.183076, lng: 121.999146 },
-    { lat: 24.583076, lng: 120.299146 },
-    { lat: 24.283076, lng: 120.799146 },
-  ],
-];
-const polygons = [
-  [
-    { lat: 23.983076, lng: 120.999146 },
-    { lat: 23.683076, lng: 120.199146 },
-    { lat: 23.183076, lng: 120.399146 },
-    { lat: 23.283076, lng: 120.799146 },
-  ],
-  [
-    { lat: 24.183076, lng: 122.999146 },
-    { lat: 23.583076, lng: 122.299146 },
-    { lat: 23.283076, lng: 122.799146 },
-  ],
-];
+let tgosData = null;
 
 async function initTGMap() {
   await requireTGOSAPI();
@@ -45,21 +14,6 @@ async function initTGMap() {
     getMapOptions()
   );
   return map;
-}
-
-async function requireTGOSAPI() {
-  return new Promise((resolve, reject) => {
-    try {
-      const script = document.createElement("script");
-      const src =
-        "http://api.tgos.tw/TGOS_API/tgos?ver=2.5&AppID=x+JLVSx85Lk=&APIKey=in8W74q0ogpcfW/STwicK8D5QwCdddJf05/7nb+OtDh8R99YN3T0LurV4xato3TpL/fOfylvJ9Wv/khZEsXEWxsBmg+GEj4AuokiNXCh14Rei21U5GtJpIkO++Mq3AguFK/ISDEWn4hMzqgrkxNe1Q==";
-      script.addEventListener("load", resolve);
-      script.src = src;
-      document.head.appendChild(script);
-    } catch (err) {
-      reject(err);
-    }
-  });
 }
 
 function getMapOptions() {
@@ -76,93 +30,19 @@ function getMapOptions() {
   return mapOptions;
 }
 
-function loadMarkers() {
-  const imgUrl = "./marker.svg"; //標記點圖示來源
-
-  const pTGMarkers = markers.map((marker) => {
-    const tgosPoint = new window.TGOS.TGPoint(marker.point.lng, marker.point.lat);
-    //設定標記點圖片及尺寸大小
-    const markerImg = new window.TGOS.TGImage(
-      imgUrl,
-      new window.TGOS.TGSize(38, 33),
-      new window.TGOS.TGPoint(0, 0),
-      new window.TGOS.TGPoint(10, 33)
-    );
-
-    const pTGMarker = new window.TGOS.TGMarker(pMap, tgosPoint, "", markerImg); //建立機關單位標記點
-
-    window.TGOS.TGEvent.addListener(pTGMarker, "click", (args) => {
-      openInfoWindow(
-        tgosPoint,
-        marker.content,
-        args.target instanceof TGOS.TGMarker
-      );
-    });
-
-    return pTGMarker;
+async function requireTGOSAPI() {
+  return new Promise((resolve, reject) => {
+    try {
+      const script = document.createElement("script");
+      const src =
+        "http://api.tgos.tw/TGOS_API/tgos?ver=2.5&AppID=x+JLVSx85Lk=&APIKey=in8W74q0ogpcfW/STwicK8D5QwCdddJf05/7nb+OtDh8R99YN3T0LurV4xato3TpL/fOfylvJ9Wv/khZEsXEWxsBmg+GEj4AuokiNXCh14Rei21U5GtJpIkO++Mq3AguFK/ISDEWn4hMzqgrkxNe1Q==";
+      script.addEventListener("load", resolve);
+      script.src = src;
+      document.head.appendChild(script);
+    } catch (err) {
+      reject(err);
+    }
   });
-
-  console.log("loadMarkers", pTGMarkers);
-}
-
-function loadPolylines() {
-  const paths = lines.map((line) => {
-    return line.map((point) => new window.TGOS.TGPoint(point.lng, point.lat));
-  });
-
-  const tgosLineStrings = paths.map(
-    (lineString) => new window.TGOS.TGLineString(lineString)
-  );
-
-  const pTGLines = tgosLineStrings.map((tgosLineString) => {
-    const pTGLine = new window.TGOS.TGLine(pMap, tgosLineString, {
-      strokeWeight: 10,
-    });
-
-    window.TGOS.TGEvent.addListener(pTGLine, "click", (args) => {
-      console.log("args", args);
-      openInfoWindow(args.point, "LineString123");
-    });
-
-    return pTGLine;
-  });
-
-  console.log("loadPolylines", pTGLines);
-}
-
-function loadPolygons() {
-  const paths = polygons.map((polygon) => {
-    return polygon.map(
-      (point) => new window.TGOS.TGPoint(point.lng, point.lat)
-    );
-  });
-
-  const tgosLineStrings = paths.map(
-    (lineString) => new window.TGOS.TGLineString(lineString)
-  );
-
-  const tgosLineRings = tgosLineStrings.map((tgosLineString) => [
-    new window.TGOS.TGLinearRing(tgosLineString),
-  ]);
-
-  const tgosPolygons = tgosLineRings.map(
-    (tgosLineRing) => new window.TGOS.TGPolygon(tgosLineRing)
-  );
-
-  const pTGFills = tgosPolygons.map((tgosPolygon) => {
-    const pTGFill = new window.TGOS.TGFill(pMap, tgosPolygon, {
-      strokeWeight: 10,
-    });
-
-    window.TGOS.TGEvent.addListener(pTGFill, "click", (args) => {
-      console.log("args", args);
-      openInfoWindow(args.point, "Polygon123");
-    });
-
-    return pTGFill;
-  });
-
-  console.log("loadPolygons", pTGFills);
 }
 
 function initInfoWindow() {
@@ -183,16 +63,53 @@ function openInfoWindow(point, content, offsetState) {
   infoWindow.open(pMap);
 }
 
-// async function loadGeoJson() {
-//   const data = new TGOS.TGData({ map: pMap });
-//   data.addGeoJson(mygeodata);
-// }
+async function loadGeoJson() {
+  tgosData = new TGOS.TGData({ map: pMap });
+  tgosData.addGeoJson(mygeodata);
+}
+
+function processData() {
+  tgosData.graphics.forEach((graphic) => {
+    const graphicType = graphic.geometry.type;
+    const processer = new Map([
+      ["TGPoint", pointProcesser],
+      ["TGPolygon", polygonProcesser],
+    ]);
+
+    const suitableProcesser = processer.get(graphicType);
+    suitableProcesser
+      ? suitableProcesser(graphic)
+      : console.error(`Can not process graphic type: ${graphicType}`);
+  });
+}
+
+function pointProcesser(graphic) {
+  const imgUrl = "./marker.svg";
+  const markerImg = new window.TGOS.TGImage(
+    imgUrl,
+    new window.TGOS.TGSize(38, 33),
+    new window.TGOS.TGPoint(0, 0),
+    new window.TGOS.TGPoint(16, 33)
+  );
+
+  graphic.gs_[0].setIcon(markerImg);
+
+  window.TGOS.TGEvent.addListener(graphic.gs_[0], "click", () => {
+    openInfoWindow(graphic.geometry, graphic.properties.Name, true);
+  });
+}
+
+function polygonProcesser(graphic) {
+  graphic.gs_[0].setStrokeWeight(10);
+
+  window.TGOS.TGEvent.addListener(graphic.gs_[0], "click", (args) => {
+    openInfoWindow(args.point, graphic.properties.Name, true);
+  });
+}
 
 (async () => {
   pMap = await initTGMap();
-  // await loadGeoJson();
-  loadMarkers();
-  loadPolylines();
-  loadPolygons();
+  await loadGeoJson();
+  processData();
   initInfoWindow();
 })();
